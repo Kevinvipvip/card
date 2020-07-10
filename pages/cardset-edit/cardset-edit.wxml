@@ -1,0 +1,171 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <!-- 主屏幕 -->
+  <view class="DrawerPage {{show_side ? 'show' : ''}}">
+    <!-- 筛选框 -->
+    <view class="filter-box2">
+      <!-- 搜索框 -->
+      <view class="search-box">
+        <view class="drawer-box">
+          <image bindtap="showModal" src="/icons/drawer.png" class="drawer"></image>
+          <view class="num {{dot_num > 0 ? 'active' : ''}}" id="dot-num">{{dot_num}}</view>
+          <view class="dot {{dot_active ? 'active' : ''}}" style="left: {{dot_left}}px; top: {{dot_top}}px;"></view>
+        </view>
+        <view class="search">
+          <input bindinput="bind_input" bindconfirm="search_card" data-name="search" value="{{search}}" maxlength="20" bindfocus="search_focus" focus="{{search_focus}}" />
+          <text class="place-holder" wx:if="{{!search_focus && !search}}">请输入卡牌名称或技能</text>
+          <image bindtap="clear_search" src="/icons/delete.png" class="del" wx:if="{{search}}"></image>
+        </view>
+      </view>
+
+      <!-- 属性/费用/类别/势力/能力/版本 -->
+      <view class="prop-line">
+        <view bindtap="pt_change" data-prop_type="{{1}}" class="prop one-line-ellipsis {{prop_type == 1 ? 'active' : ''}}">属性</view>
+        <view class="shu"></view>
+        <view bindtap="pt_change" data-prop_type="{{2}}" class="prop one-line-ellipsis {{prop_type == 2 ? 'active' : ''}}">费用</view>
+        <view class="shu"></view>
+        <view bindtap="pt_change" data-prop_type="{{3}}" class="prop one-line-ellipsis {{prop_type == 3 ? 'active' : ''}}">类别</view>
+        <view class="shu"></view>
+        <view bindtap="pt_change" data-prop_type="{{4}}" class="prop one-line-ellipsis {{prop_type == 4 ? 'active' : ''}}">势力</view>
+        <view class="shu"></view>
+        <view bindtap="pt_change" data-prop_type="{{5}}" class="prop one-line-ellipsis {{prop_type == 5 ? 'active' : ''}}">能力</view>
+        <view class="shu"></view>
+        <view bindtap="pt_change" data-prop_type="{{6}}" class="prop one-line-ellipsis {{prop_type == 6 ? 'active' : ''}}">版本</view>
+
+        <!-- 属性弹框 -->
+        <view class="pop-list" wx:if="{{prop_type == 1}}">
+          <view bindtap="choose_prop" data-index="{{index}}" data-type="{{1}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_attr}}" wx:key="id">{{item.attr_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+          <view class="prop vh" wx:for="{{card_attr_fp}}" wx:key="index"></view>
+        </view>
+
+        <!-- 费用弹框 -->
+        <view class="pop-list" wx:if="{{prop_type == 2}}">
+          <view bindtap="choose_prop" data-index="{{index}}" data-type="{{2}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{resource}}" wx:key="id">{{item.name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+          <view class="prop vh" wx:for="{{resource_fp}}" wx:key="index"></view>
+        </view>
+
+        <!-- 类别弹框 -->
+        <view class="pop-list" wx:if="{{prop_type == 3}}">
+          <view bindtap="choose_prop" data-index="{{index}}" data-type="{{3}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_type}}" wx:key="id">{{item.type_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+          <view class="prop vh" wx:for="{{card_type_fp}}" wx:key="index"></view>
+        </view>
+
+        <!-- 势力弹框 -->
+        <view class="pop-list" wx:if="{{prop_type == 4}}">
+          <view bindtap="choose_prop" data-index="{{index}}" data-type="{{4}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_camp}}" wx:key="id">{{item.camp_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+          <view class="prop vh" wx:for="{{card_camp_fp}}" wx:key="index"></view>
+        </view>
+
+        <!-- 能力弹框 -->
+        <view class="pop-list" wx:if="{{prop_type == 5}}">
+          <view bindtap="choose_prop" data-index="{{index}}" data-type="{{5}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_ability}}" wx:key="id">{{item.ability_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+          <view class="prop vh" wx:for="{{card_ability_fp}}" wx:key="index"></view>
+        </view>
+
+        <!-- 版本弹框 -->
+        <view class="pop-list line" wx:if="{{prop_type == 6}}">
+          <view bindtap="choose_prop" data-index="{{index}}" data-type="{{6}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_version}}" wx:key="id">{{item.version_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 选择属性遮罩 -->
+    <view bindtap="hide_pt" class="modal" wx:if="{{prop_type != 0}}"></view>
+
+    <view class="card-box">
+      <scroll-view bindscrolltolower="more_card" scroll-y class="card-list-wrapper" style="height: {{cl_height}}px;">
+        <view class="card-list">
+          <navigator bindtap="jump" data-id="{{item.id}}" wx:for="{{card_list}}" wx:key="id" class="card">
+            <view class="btn-group">
+              <button catchtap="pai_btn_click" data-index="{{index}}" data-type="{{1}}" id="card_zhu_{{index}}" class="zhu {{item.zhu_active ? 'active' : ''}}">主</button>
+              <button catchtap="pai_btn_click" data-index="{{index}}" data-type="{{2}}" id="card_bei_{{index}}" class="bei {{item.bei_active ? 'active' : ''}}">备</button>
+            </view>
+            <image src="{{item.pic}}" lazy-load></image>
+          </navigator>
+          <view class="card vh" wx:for="{{card_flex_pad}}" wx:key="index"></view>
+        </view>
+
+        <view class="friendly-nodata" wx:if="{{nodata}}">
+          <image src="/images/nodata-search.png" class="img"></image>
+          <view class="title">无结果</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 返回主屏幕 -->
+  <view class="DrawerClose {{show_side ? 'show' : ''}}" bindtap="hideModal">
+    <text class="cuIcon-pullright"></text>
+  </view>
+
+  <!-- 侧栏 -->
+  <view scroll-y class="DrawerWindow {{show_side ? 'show' : ''}}">
+    <view class="top-box">
+      <view class="explain">
+        <image src="/images/explain-bg.jpg" class="bg"></image>
+        <view class="text">
+          <view>主牌与备牌区分别收集了您选中的卡牌</view>
+          <view>快来看看吧~</view>
+        </view>
+      </view>
+      <view class="tab-list">
+        <view bindtap="tab_change" data-tab="{{1}}" class="tab {{tab_active == 1 ? 'active' : ''}}">主牌区</view>
+        <view bindtap="tab_change" data-tab="{{2}}" class="tab {{tab_active == 2 ? 'active' : ''}}">备牌区</view>
+      </view>
+    </view>
+    <view class="card-list-wrapper ffffpp" id="card-list2-wrapper">
+      <scroll-view scroll-y class="card-list2" style="height: {{cl2_height}}px;">
+        <view class="card" wx:for="{{zhu_list}}" wx:key="index" wx:if="{{tab_active == 1}}">
+          <view class="cost">{{item.resource}}</view>
+          <view class="name one-line-ellipsis">{{item.card_name}}</view>
+          <view class="add-sub">
+            <image bindtap="card_num_change" data-index="{{index}}" data-type="{{1}}" data-num="{{-1}}" src="/icons/minus.png" class="sub"></image>
+            <view class="num">{{item.num}}</view>
+            <image bindtap="card_num_change" data-index="{{index}}" data-type="{{1}}" data-num="{{1}}" src="/icons/add.png" class="add"></image>
+          </view>
+        </view>
+        <view class="card" wx:for="{{bei_list}}" wx:key="index" wx:if="{{tab_active == 2}}">
+          <view class="cost">{{item.resource}}</view>
+          <view class="name one-line-ellipsis">{{item.card_name}}</view>
+          <view class="add-sub">
+            <image bindtap="card_num_change" data-index="{{index}}" data-type="{{2}}" data-num="{{-1}}" src="/icons/minus.png" class="sub"></image>
+            <view class="num">{{item.num}}</view>
+            <image bindtap="card_num_change" data-index="{{index}}" data-type="{{2}}" data-num="{{1}}" src="/icons/add.png" class="add"></image>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="bottom-box">
+      <button bindtap="show_edit" class="edit-btn">{{id == 0 ? '创建' : '保存'}}套牌</button>
+    </view>
+  </view>
+
+  <!-- 创建/编辑套牌modal -->
+  <view bindtap="hide_edit" catchtouchmove class="cu-modal {{show_edit ? 'show' : ''}}">
+    <view catchtap class="cu-dialog cmodal">
+      <view class="title">请输入套牌名称</view>
+      <view class="form">
+        <input bindinput="bind_input" data-name="dir_name" value="{{dir_name}}" type="text" maxlength="20" />
+      </view>
+      <view class="btn-box">
+        <button bindtap="hide_edit" class="cancel">取消</button>
+        <button bindtap="edit_combo" class="confirm">确定</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 复制套牌成功modal -->
+  <view catchtouchmove class="cu-modal {{show_succ ? 'show' : ''}}">
+    <view class="cu-dialog cmodal succ">
+      <icon type="success" color="#4981fb" size="66rpx" />
+      <view class="title">套牌{{id == 0 ? '创建' : '修改'}}成功</view>
+      <view class="btn-box">
+        <button bindtap="back_home" class="cancel">返回主页</button>
+        <button bindtap="to_detail" class="confirm">进入详情</button>
+      </view>
+    </view>
+  </view>
+</view>

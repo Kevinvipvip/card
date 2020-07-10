@@ -1,0 +1,24 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="card-box">
+    <view class="card-list">
+      <navigator url="/pages/card-detail/card-detail?id={{item.id}}" wx:for="{{card_list}}" wx:key="id" class="card">
+        <image src="{{item.pic}}" class="cover" lazy-load></image>
+        <view catchtap="cardCollect" data-index="{{index}}" class="del">
+          <image src="/icons/icon_delete3.png"></image>
+        </view>
+      </navigator>
+      <view class="card vh" wx:for="{{card_flex_pad}}" wx:key="index"></view>
+    </view>
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
+    </view>
+    <view class="friendly-nodata" wx:if="{{nodata}}">
+      <image src="/images/nodata-search.png" class="img"></image>
+      <view class="title">暂无收藏</view>
+    </view>
+  </view>
+</view>

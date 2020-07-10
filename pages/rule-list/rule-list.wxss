@@ -1,0 +1,38 @@
+.page {
+  background: #fbfbfb;
+}
+
+.gg-box {
+  padding: 42rpx 24rpx;
+}
+
+.gg-box .gg:first-child {
+  margin-top: 0;
+}
+
+.gg-box .gg {
+  margin-top: 24rpx;
+  background: #fff;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  border: 8rpx solid #438eff;
+  border-width: 0 8rpx;
+  border-radius: 8rpx;
+  box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, 0.1);
+}
+
+.gg-box .gg .title {
+  width: auto;
+  flex-grow: 1;
+  font-size: 32rpx;
+  color: #438eff;
+}
+
+.gg-box .gg .date {
+  margin-left: 20rpx;
+  flex-shrink: 0;
+  font-size: 24rpx;
+  color: #3d3737;
+  opacity: 0.4;
+}

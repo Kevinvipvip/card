@@ -1,0 +1,247 @@
+.page {
+}
+
+.banner {
+  height: 300rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.banner .my-img-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.banner .user-info {
+  margin-left: 25rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.banner .user-info .header {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+
+.banner .user-info .nickname {
+  font-size: 36rpx;
+  color: #fff;
+  letter-spacing: 1rpx;
+  margin-left: 25rpx;
+}
+
+.banner .user-info .auth {
+  width: 180rpx;
+  height: 60rpx;
+  padding: 0;
+  margin: 0 0 0 29rpx;
+  line-height: 60rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #2b8efd;
+  min-height: auto;
+  font-weight: normal;
+}
+
+.king-kong {
+  border-top: 7rpx solid #fcfafa;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40rpx 24rpx;
+}
+
+.king-kong .menu {
+  width: 23%;
+  flex-grow: 1;
+  box-sizing: border-box;
+  text-align: center;
+  border: 0;
+  padding: 0;
+  margin: 0 0 45rpx 0;
+  background: transparent;
+  min-height: auto;
+  line-height: 1;
+  font-weight: normal;
+}
+
+.king-kong .menu:nth-last-child(-n + 4) {
+  margin-bottom: 0;
+}
+
+.king-kong .menu .icon {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.king-kong .menu .text {
+  margin-top: 24rpx;
+  color: #000;
+  opacity: 0.8;
+  font-size: 26rpx;
+}
+
+.set-card-box {
+  border-top: 7rpx solid #fcfafa;
+  padding: 40rpx 24rpx;
+}
+
+.set-card-box .title-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.03);
+}
+
+.set-card-box .title-line .title {
+  display: flex;
+  align-items: center;
+  color: #4583fb;
+  font-size: 36rpx;
+}
+
+.set-card-box .title-line .title::before {
+  content: '';
+  width: 4rpx;
+  height: 34rpx;
+  border-radius: 2rpx;
+  opacity: 0.8;
+  background: #2586ff;
+  margin-right: 8rpx;
+}
+
+.set-card-box .title-line .create {
+  display: flex;
+  align-items: center;
+}
+
+.set-card-box .title-line .create .text {
+  font-size: 28rpx;
+  color: #3d3737;
+  opacity: 0.4;
+  margin-right: 12rpx;
+}
+
+.set-card-box .title-line .create image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.set-card-box .info-line {
+  margin-top: 25rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.set-card-box .info-line .count {
+  font-size: 26rpx;
+  color: #3d3737;
+  opacity: 0.6;
+}
+
+.set-card-box .info-line .edit {
+  margin: 0;
+  padding: 0;
+  width: 90rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  background: #4583fb;
+  border-radius: 25rpx;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1rpx;
+  font-weight: normal;
+}
+
+.set-card-box .card-list {
+  margin-top: 39rpx;
+}
+
+.set-card-box .card-list .card:first-child {
+  margin-top: 0;
+}
+
+.set-card-box .card-list .card {
+  margin-top: 30rpx;
+  display: flex;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.03);
+}
+
+.set-card-box .card-list .card .cover {
+  flex-shrink: 0;
+  width: 180rpx;
+  height: 120rpx;
+}
+
+.set-card-box .card-list .card .info {
+  flex-grow: 1;
+  margin-left: 27rpx;
+  padding: 5rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.set-card-box .card-list .card .info .title {
+  font-size: 34rpx;
+  color: #000;
+  opacity: 0.8;
+}
+
+.set-card-box .card-list .card .info .counts {
+  font-size: 26rpx;
+  color: #000;
+  opacity: 0.4;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.set-card-box .counts .left {
+  display: flex;
+}
+
+.set-card-box .counts .left > view {
+  width: 160rpx;
+}
+
+.set-card-box .card-list .card .info .counts .zhu {
+}
+
+.set-card-box .card-list .card .info .counts .bei {
+  margin-left: 20rpx;
+}
+
+.set-card-box .counts .del {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20rpx 5rpx 5rpx 20rpx;
+}
+
+.set-card-box .counts .del image {
+  width: 30rpx;
+  height: 31rpx;
+}
+
+.friendly-nodata {
+  margin-top: 0;
+  overflow: hidden !important;
+  padding-bottom: 50rpx;
+}
+
+.friendly-nodata .img {
+  margin-top: -178rpx;
+}

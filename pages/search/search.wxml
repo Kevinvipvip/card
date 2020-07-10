@@ -1,0 +1,87 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <!-- 整个筛选框 -->
+  <view class="filter-box">
+    <!-- 搜索框 -->
+    <view class="search-box">
+      <view class="search">
+        <input bindinput="bind_input" bindconfirm="search_card" data-name="search" value="{{search}}" maxlength="20" bindfocus="search_focus" bindblur="search_blur" focus="{{search_focus}}" />
+        <text class="place-holder" wx:if="{{!search_focus && !search}}">请输入卡牌名称或技能</text>
+        <image bindtap="clear_search" src="/icons/delete.png" class="del" wx:if="{{search}}"></image>
+      </view>
+    </view>
+
+    <!-- 属性/费用/类别/势力/能力/版本 -->
+    <view class="prop-line">
+      <view bindtap="pt_change" data-prop_type="{{1}}" class="prop one-line-ellipsis {{prop_type == 1 ? 'active' : ''}}">属性</view>
+      <view class="shu"></view>
+      <view bindtap="pt_change" data-prop_type="{{2}}" class="prop one-line-ellipsis {{prop_type == 2 ? 'active' : ''}}">费用</view>
+      <view class="shu"></view>
+      <view bindtap="pt_change" data-prop_type="{{3}}" class="prop one-line-ellipsis {{prop_type == 3 ? 'active' : ''}}">类别</view>
+      <view class="shu"></view>
+      <view bindtap="pt_change" data-prop_type="{{4}}" class="prop one-line-ellipsis {{prop_type == 4 ? 'active' : ''}}">势力</view>
+      <view class="shu"></view>
+      <view bindtap="pt_change" data-prop_type="{{5}}" class="prop one-line-ellipsis {{prop_type == 5 ? 'active' : ''}}">能力</view>
+      <view class="shu"></view>
+      <view bindtap="pt_change" data-prop_type="{{6}}" class="prop one-line-ellipsis {{prop_type == 6 ? 'active' : ''}}">版本</view>
+
+      <!-- 属性弹框 -->
+      <view class="pop-list" wx:if="{{prop_type == 1}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{1}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_attr}}" wx:key="id">{{item.attr_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+        <view class="prop vh" wx:for="{{card_attr_fp}}" wx:key="index"></view>
+      </view>
+
+      <!-- 费用弹框 -->
+      <view class="pop-list" wx:if="{{prop_type == 2}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{2}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{resource}}" wx:key="id">{{item.name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+        <view class="prop vh" wx:for="{{resource_fp}}" wx:key="index"></view>
+      </view>
+
+      <!-- 类别弹框 -->
+      <view class="pop-list" wx:if="{{prop_type == 3}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{3}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_type}}" wx:key="id">{{item.type_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+        <view class="prop vh" wx:for="{{card_type_fp}}" wx:key="index"></view>
+      </view>
+
+      <!-- 势力弹框 -->
+      <view class="pop-list" wx:if="{{prop_type == 4}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{4}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_camp}}" wx:key="id">{{item.camp_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+        <view class="prop vh" wx:for="{{card_camp_fp}}" wx:key="index"></view>
+      </view>
+
+      <!-- 能力弹框 -->
+      <view class="pop-list" wx:if="{{prop_type == 5}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{5}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_ability}}" wx:key="id">{{item.ability_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+        <view class="prop vh" wx:for="{{card_ability_fp}}" wx:key="index"></view>
+      </view>
+
+      <!-- 版本弹框 -->
+      <view class="pop-list line" wx:if="{{prop_type == 6}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{6}}" class="prop {{item.active ? 'active' : ''}}" wx:for="{{card_version}}" wx:key="id">{{item.version_name}}<image src="/icons/cornermark.png" class="cornermark" wx:if="{{item.active && item.id != -2}}"></image></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 选择属性遮罩 -->
+  <view bindtap="hide_pt" catchtouchmove class="modal" wx:if="{{prop_type != 0}}"></view>
+
+  <!-- 卡牌列表 -->
+  <view class="card-box">
+    <view class="card-list">
+      <view bindtap="jump" data-id="{{item.id}}" wx:for="{{card_list}}" wx:key="id" class="card">
+        <image src="{{item.pic}}" lazy-load></image>
+      </view>
+      <view class="card vh" wx:for="{{card_flex_pad}}" wx:key="index"></view>
+    </view>
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
+    </view>
+    <view class="friendly-nodata" wx:if="{{nodata}}">
+      <image src="/images/nodata-search.png" class="img"></image>
+      <view class="title">无结果</view>
+    </view>
+  </view>
+</view>

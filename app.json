@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/index/index",
+    "pages/search/search",
+    "pages/shop/shop",
+    "pages/my/my",
+    "pages/shop-detail/shop-detail",
+    "pages/cart-order-create/cart-order-create",
+    "pages/shop-car/shop-car",
+    "pages/cardset-edit/cardset-edit",
+    "pages/test/test",
+    "pages/login/login",
+    "pages/blood-gas/blood-gas",
+    "pages/card-detail/card-detail",
+    "pages/cardset-detail/cardset-detail",
+    "pages/about/about",
+    "pages/rule-list/rule-list",
+    "pages/rule-detail/rule-detail",
+    "pages/user-info/user-info",
+    "pages/order-create/order-create",
+    "pages/my-address/my-address",
+    "pages/address-detail/address-detail",
+    "pages/my-orders/my-orders",
+    "pages/order-detail/order-detail",
+    "pages/gg-list/gg-list",
+    "pages/gg-detail/gg-detail",
+    "pages/logistics/logistics",
+    "pages/my-collect/my-collect",
+    "pages/refund-list/refund-list",
+    "pages/poster/poster"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#fcfafa",
+    "navigationBarTitleText": "掌控的历史",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#2586ff",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "卡牌查询",
+        "iconPath": "icons/search.png",
+        "selectedIconPath": "icons/search-active.png"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "商城",
+        "iconPath": "icons/shop.png",
+        "selectedIconPath": "icons/shop-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "icons/my.png",
+        "selectedIconPath": "icons/my-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

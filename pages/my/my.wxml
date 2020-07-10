@@ -1,0 +1,95 @@
+<view class="page">
+  <!-- banner -->
+  <view class="banner">
+    <image src="/images/my_img_bg.jpg" class="my-img-bg"></image>
+    <view class="user-info">
+      <image src="{{user.avatar}}" class="header"></image>
+
+      <button bindgetuserinfo="auth" open-type="getUserInfo" class="auth" wx:if="{{user.user_auth == 0}}">点击授权</button>
+      <view class="nickname" wx:else>{{user.nickname}}</view>
+    </view>
+  </view>
+
+  <!-- 金刚区 -->
+  <view class="king-kong">
+    <navigator url="/pages/my-orders/my-orders" class="menu">
+      <image src="/icons/my_icon_myorder.png" class="icon"></image>
+      <view class="text">我的订单</view>
+    </navigator>
+    <navigator url="/pages/my-address/my-address" class="menu">
+      <image src="/icons/my_icon_address.png" class="icon"></image>
+      <view class="text">收货地址</view>
+    </navigator>
+    <navigator url="/pages/user-info/user-info" class="menu">
+      <image src="/icons/my_icon_info.png" class="icon"></image>
+      <view class="text">个人信息</view>
+    </navigator>
+    <navigator url="/pages/poster/poster" class="menu" wx:if="{{user.share_auth == 1}}">
+      <image src="/icons/my_icon_friend.png" class="icon"></image>
+      <view class="text">邀请好友</view>
+    </navigator>
+    <navigator url="/pages/my-collect/my-collect" class="menu">
+      <image src="/icons/my_icon_collect.png" class="icon"></image>
+      <view class="text">我的收藏</view>
+    </navigator>
+    <navigator url="/pages/refund-list/refund-list" class="menu">
+      <image src="/icons/my_icon_aftersale.png" class="icon"></image>
+      <view class="text">售后服务</view>
+    </navigator>
+    <button open-type="contact" class="menu">
+      <image src="/icons/my_icon_customerservice.png" class="icon"></image>
+      <view class="text">客服中心</view>
+    </button>
+    <navigator url="/pages/about/about" class="menu">
+      <image src="/icons/my_icon_aboutus.png" class="icon"></image>
+      <view class="text">关于我们</view>
+    </navigator>
+    <navigator url="/pages/shop-car/shop-car" class="menu">
+      <image src="/icons/shopping-cart.png" class="icon"></image>
+      <view class="text">购物车</view>
+    </navigator>
+    <block wx:if="{{user.share_auth == 1}}">
+      <view class="menu vh"></view>
+      <view class="menu vh"></view>
+      <view class="menu vh"></view>
+    </block>
+  </view>
+
+  <!-- 我的套牌 -->
+  <view class="set-card-box">
+    <view class="title-line">
+      <view class="title">我的套牌</view>
+      <navigator url="/pages/cardset-edit/cardset-edit" class="create">
+        <view class="text">创建套牌</view>
+        <image src="/icons/create-cards.png"></image>
+      </navigator>
+    </view>
+
+    <view class="info-line">
+      <view class="count">全部（{{combo_list.length}}）</view>
+<!--      <button class="edit" size="mini" wx:if="{{cardset_list.length > 0}}">编辑</button>-->
+    </view>
+
+    <view class="card-list">
+      <navigator url="/pages/cardset-detail/cardset-detail?id={{item.id}}" class="card" wx:for="{{combo_list}}" wx:key="id">
+        <image src="{{item.cover}}" class="cover"></image>
+        <view class="info">
+          <view class="title one-line-ellipsis">{{item.dir_name}}</view>
+          <view class="counts">
+            <view class="left">
+              <view class="zhu">主牌：{{item.main_num}}</view>
+              <view class="bei">备牌：{{item.spare_num}}</view>
+            </view>
+            <view catchtap="cardComboDel" data-id="{{item.id}}" class="del">
+              <image src="/icons/icon_delete2.png"></image>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class="friendly-nodata" wx:if="{{nodata}}">
+      <image src="/images/nodata-cardset.png" class="img"></image>
+      <view class="title">暂无套牌</view>
+    </view>
+  </view>
+</view>

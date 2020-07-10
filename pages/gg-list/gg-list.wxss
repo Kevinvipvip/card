@@ -1,0 +1,35 @@
+.page {
+  background: #fcfafa;
+}
+
+.gg-box {
+  padding: 42rpx 24rpx;
+}
+
+.gg-box .gg:first-child {
+  margin-top: 0;
+}
+
+.gg-box .gg {
+  margin-top: 50rpx;
+  display: flex;
+  align-items: center;
+  padding-bottom: 21rpx;
+  border-bottom: 2rpx dashed rgba(0, 0, 0, 0.4);
+}
+
+.gg-box .gg .title {
+  width: auto;
+  flex-grow: 1;
+  font-size: 26rpx;
+  color: #3d3737;
+  opacity: 0.9;
+}
+
+.gg-box .gg .date {
+  margin-left: 20rpx;
+  flex-shrink: 0;
+  font-size: 24rpx;
+  color: #3d3737;
+  opacity: 0.4;
+}

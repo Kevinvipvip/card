@@ -1,0 +1,128 @@
+<!-- 返回 -->
+<view bindtap="back" class="back-box">
+  <image src="/icons/back.png"></image>
+</view>
+
+<!-- 计血器页面 -->
+<view class="page page-blood" wx:if="{{page == 1}}">
+  <view class="two-people">
+    <view class="people left">
+      <image src="{{blood1_bg}}" class="bg" mode="aspectFill"></image>
+
+      <view class="blood">{{blood1}}</view>
+      <view class="round-box">
+        <image bindtap="round_change" data-num="{{1}}" data-side="{{1}}" src="/icons/blood-up.png" class="up"></image>
+        <view class="num">
+          <image src="/images/fangkuai.png" class="bg"></image>
+          <view class="text">{{round1}}</view>
+        </view>
+        <image bindtap="round_change" data-num="{{-1}}" data-side="{{1}}" src="/icons/blood-down.png" class="down"></image>
+      </view>
+    </view>
+    <view class="vline"></view>
+    <view class="people right">
+      <image src="{{blood2_bg}}" class="bg" mode="aspectFill"></image>
+
+      <view class="blood">{{blood2}}</view>
+      <view class="round-box">
+        <image bindtap="round_change" data-num="{{1}}" data-side="{{2}}" src="/icons/blood-up.png" class="up"></image>
+        <view class="num">
+          <image src="/images/fangkuai.png" class="bg"></image>
+          <view class="text">{{round2}}</view>
+        </view>
+        <image bindtap="round_change" data-num="{{-1}}" data-side="{{2}}" src="/icons/blood-down.png" class="down"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="eight-num">
+    <!-- 色子 -->
+    <image bindtap="toggle_page" src="/icons/dice.png" class="dice"></image>
+
+    <!-- 重置按钮 -->
+    <image bindtap="reset" src="/icons/icon_reset.png" class="reset"></image>
+
+    <view class="line">
+      <view bindtap="blood_change" data-num="{{-1}}" data-side="{{1}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">-1</view>
+      </view>
+      <view bindtap="blood_change" data-num="{{1}}" data-side="{{1}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">+1</view>
+      </view>
+      <view class="vline"></view>
+      <view bindtap="blood_change" data-num="{{-1}}" data-side="{{2}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">-1</view>
+      </view>
+      <view bindtap="blood_change" data-num="{{1}}" data-side="{{2}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">+1</view>
+      </view>
+    </view>
+    <view class="line">
+      <view bindtap="blood_change" data-num="{{-5}}" data-side="{{1}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">-5</view>
+      </view>
+      <view bindtap="blood_change" data-num="{{5}}" data-side="{{1}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">+5</view>
+      </view>
+      <view class="vline"></view>
+      <view bindtap="blood_change" data-num="{{-5}}" data-side="{{2}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">-5</view>
+      </view>
+      <view bindtap="blood_change" data-num="{{5}}" data-side="{{2}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <view class="text">+5</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- roll点页面 -->
+<view class="page page-dice" wx:else>
+  <view class="two-people">
+    <view class="people left">
+      <image src="{{blood1_bg}}" class="bg" mode="aspectFill"></image>
+      <view class="blood">{{roll1}}</view>
+    </view>
+    <view class="vline"></view>
+    <view class="people right">
+      <image src="{{blood2_bg}}" class="bg" mode="aspectFill"></image>
+      <view class="blood">{{roll2}}</view>
+    </view>
+  </view>
+
+  <view class="eight-num">
+    <!-- 返回计血器 -->
+    <image bindtap="toggle_page" src="/icons/icon_switch.png" class="dice"></image>
+
+    <view class="line">
+      <view bindtap="roll" data-num="{{1}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <image src="/images/liumian.png" class="con-img"></image>
+        <view class="modal" wx:if="{{when_roll || roll_no != 0 && roll_no != 3}}"></view>
+      </view>
+      <view bindtap="roll" data-num="{{2}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <image src="/images/yingbi.png" class="con-img"></image>
+        <view class="modal" wx:if="{{when_roll || roll_no != 0 && roll_no != 4}}"></view>
+      </view>
+      <view class="vline"></view>
+      <view bindtap="roll" data-num="{{3}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <image src="/images/liumian.png" class="con-img"></image>
+        <view class="modal" wx:if="{{when_roll || roll_no != 0 && roll_no != 1}}"></view>
+      </view>
+      <view bindtap="roll" data-num="{{4}}" class="num">
+        <image src="/images/blood-cell-bg.jpg" class="bg"></image>
+        <image src="/images/yingbi.png" class="con-img"></image>
+        <view class="modal" wx:if="{{when_roll || roll_no != 0 && roll_no != 2}}"></view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "计血器",
+  "navigationStyle": "custom",
+  "pageOrientation": "landscape",
+  "enablePullDownRefresh": false,
+  "disableScroll": true,
+  "usingComponents": {}
+}

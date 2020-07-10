@@ -1,0 +1,26 @@
+.page.rich-page {
+  background: #fff;
+  padding: 0;
+}
+
+.title-box {
+  border-top: 4rpx solid #fcfafa;
+  border-bottom: 2rpx solid #fcfafa;
+  padding: 26.5rpx 24rpx 32rpx;
+}
+
+.title {
+  font-size: 34rpx;
+  line-height: 51rpx;
+  color: rgba(61, 55, 55, 0.9);
+}
+
+.date {
+  color: rgba(61, 55, 55, 0.4);
+  font-size: 24rpx;
+  margin-top: 17rpx;
+}
+
+.content-wrapper {
+  padding: 30rpx 24rpx;
+}

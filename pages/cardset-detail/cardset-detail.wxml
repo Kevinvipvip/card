@@ -1,0 +1,152 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="set-info">
+    <view bindtap="show_cd_modal" class="title" wx:if="{{form_share != 1}}">
+      <image src="/icons/cd-tab1.png" class="icon"></image>
+      <view class="text">{{combo.dir_name}}</view>
+    </view>
+    <view class="title" wx:else>
+      <view class="text">{{combo.dir_name}}</view>
+    </view>
+    <view class="nums">
+      <view class="zhu">主牌：{{combo.main_num}}</view>
+      <view class="bei">备牌：{{combo.spare_num}}</view>
+    </view>
+  </view>
+
+  <view class="zhu-box">
+    <view class="title">主牌</view>
+
+    <view class="pai-list">
+      <navigator url="/pages/card-detail/card-detail?id={{card.card_id}}" class="pai" wx:for="{{main}}" wx:for-item="card" wx:key="id">
+        <image src="{{card.cover}}" class="cover"></image>
+        <view class="info">
+          <view class="top-line">
+            <view class="title">{{card.card_name}} * {{card.num}}</view>
+            <view class="icons">
+              <view class="resource" wx:if="{{card.resource != -2}}">
+                <image src="/images/resource-bg.png" class="bg"></image>
+                <view class="text">{{card.resource}}</view>
+              </view>
+              <image src="{{item}}" class="force" wx:for="{{card.camp_icon}}" wx:key="index"></image>
+            </view>
+          </view>
+          <view class="card-type">{{card.wushuang == 1 ? '「无双」' : ''}}{{card.type}}</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="bei-box">
+    <view class="title">备牌</view>
+    <view class="pai-list">
+      <navigator url="/pages/card-detail/card-detail?id={{item.card_id}}" class="pai" wx:for="{{spare}}" wx:key="id">
+        <image src="{{item.cover}}" class="cover"></image>
+        <view class="info">
+          <view class="top-line">
+            <view class="title">{{item.card_name}} * {{item.num}}</view>
+            <view class="icons">
+              <view class="resource" wx:if="{{item.resource != -2}}">
+                <image src="/images/resource-bg.png" class="bg"></image>
+                <view class="text">{{item.resource}}</view>
+              </view>
+              <image src="{{camp}}" class="force" wx:for="{{item.camp_icon}}" wx:key="index" wx:for-item="camp"></image>
+            </view>
+          </view>
+          <view class="card-type">{{item.wushuang == 1 ? '「无双」' : ''}}{{item.type}}</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="foot" wx:if="{{form_share != 1}}">
+    <navigator url="/pages/cardset-edit/cardset-edit?id={{id}}" open-type="redirect" class="tab">
+      <image src="/icons/cd-tab1.png" class="icon"></image>
+      <view class="text">编辑套牌</view>
+    </navigator>
+    <view bindtap="show_tongji" class="tab">
+      <image src="/icons/cd-tab2.png" class="icon"></image>
+      <view class="text">统计套牌</view>
+    </view>
+    <view bindtap="show_copy_modal" class="tab">
+      <image src="/icons/cd-tab3.png" class="icon"></image>
+      <view class="text">复制套牌</view>
+    </view>
+    <button open-type="share" class="tab">
+      <image src="/icons/cd-tab4.png" class="icon"></image>
+      <view class="text">分享套牌</view>
+    </button>
+  </view>
+
+  <!-- 统计modal -->
+  <view bindtap="hide_tongji" catchtouchmove class="cu-modal bottom-modal {{show_tongji ? 'show' : ''}}">
+    <view catchtap class="cu-dialog tmodal">
+      <image bindtap="hide_tongji" src="/icons/tongji-x.png" class="close"></image>
+
+      <view class="title">费用分布图</view>
+
+      <view class="column-image">
+        <view class="kuai-list">
+          <view wx:for="{{card_num_list}}" wx:key="index" class="kuai">
+            <view class="num">{{item.num}}</view>
+            <view class="gray" style="height: {{item.height}}rpx;"></view>
+          </view>
+        </view>
+        <view class="num-list">
+          <view class="num">0</view>
+          <view class="num">1</view>
+          <view class="num">2</view>
+          <view class="num">3</view>
+          <view class="num">4</view>
+          <view class="num">5</view>
+          <view class="num">6</view>
+          <view class="num">7+</view>
+          <view class="num">X</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 修改套牌名称 -->
+  <view bindtap="hide_cd_modal" catchtouchmove class="cu-modal {{show_cd_modal ? 'show' : ''}}">
+    <view catchtap class="cu-dialog cmodal">
+      <view class="title">修改套牌名称</view>
+      <view class="form">
+        <input bindinput="bind_input" data-name="dir_name" value="{{dir_name}}" type="text" maxlength="20" bindconfirm="dirnameModify" />
+      </view>
+      <view class="btn-box">
+        <button bindtap="hide_cd_modal" class="cancel">取消</button>
+        <button bindtap="dirnameModify" class="confirm">确定</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 复制套牌modal -->
+  <view bindtap="hide_copy_modal" catchtouchmove class="cu-modal {{show_copy ? 'show' : ''}}">
+    <view catchtap class="cu-dialog cmodal">
+      <view class="title">请输入套牌名称</view>
+      <view class="form">
+        <input bindinput="bind_input" data-name="copy_dir_name" value="{{copy_dir_name}}" type="text" maxlength="20" bindconfirm="cardComboCopy" />
+      </view>
+      <view class="btn-box">
+        <button bindtap="hide_copy_modal" class="cancel">取消</button>
+        <button bindtap="cardComboCopy" class="confirm">确定</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 复制套牌成功modal -->
+  <view catchtouchmove class="cu-modal {{show_succ ? 'show' : ''}}">
+    <view catchtap class="cu-dialog cmodal succ">
+      <icon type="success" color="#4981fb" size="66rpx" />
+      <view class="title">套牌复制成功</view>
+      <view class="btn-box">
+        <button bindtap="hide_succ_modal" class="cancel">返回</button>
+        <button bindtap="to_copy_set" class="confirm">进入详情</button>
+      </view>
+    </view>
+  </view>
+</view>

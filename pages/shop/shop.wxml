@@ -1,0 +1,76 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <!-- 购物车 -->
+  <navigator url="/pages/shop-car/shop-car" class="cart-icon" wx:if="{{show_cart}}">
+    <image src="/icons/shopping-cart.png"></image>
+  </navigator>
+
+  <view class="filter-box">
+    <!-- 搜索框 -->
+    <view class="search-box">
+      <view class="search">
+        <input bindinput="bind_input" bindconfirm="search_shop" data-name="search" value="{{search}}" maxlength="20" bindfocus="search_focus" focus="{{search_focus}}" />
+        <text class="place-holder" wx:if="{{!search_focus && !search}}">请输入商品名称</text>
+        <image bindtap="clear_search" src="/icons/delete.png" class="del" wx:if="{{search}}"></image>
+      </view>
+    </view>
+
+    <!-- 分类/版本 -->
+    <view class="prop-line">
+      <view bindtap="tab_change" data-prop_type="{{1}}"
+            class="prop {{prop_type == 1 ? 'active' : ''}}">
+        <view class="text one-line-ellipsis">{{cate_ai == 0 ? '分类' : cate_list[cate_ai].cate_name}}</view>
+        <image src="/icons/opt-down.png" class="arrow"></image>
+      </view>
+      <view class="shu"></view>
+      <view bindtap="tab_change" data-prop_type="{{2}}"
+            class="prop {{prop_type == 2 ? 'active' : ''}}">
+        <view class="text one-line-ellipsis">{{version_ai == 0 ? '版本' : version_list[version_ai].version_name}}</view>
+        <image src="/icons/opt-down.png" class="arrow"></image>
+      </view>
+
+      <!-- 分类弹框 -->
+      <view class="pop-list" wx:if="{{prop_type == 1}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{1}}" class="prop {{cate_ai == index ? 'active' : ''}}" wx:for="{{cate_list}}" wx:key="id">{{item.cate_name}}</view>
+      </view>
+
+      <!-- 版本弹框 -->
+      <view class="pop-list" wx:if="{{prop_type == 2}}">
+        <view bindtap="choose_prop" data-index="{{index}}" data-type="{{2}}" class="prop {{version_ai == index ? 'active' : ''}}" wx:for="{{version_list}}" wx:key="id">{{item.version_name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 选择属性遮罩 -->
+  <view bindtap="hide_tab" class="modal" wx:if="{{prop_type != 0}}"></view>
+
+  <!-- 商品列表 -->
+  <view class="product-box">
+    <view class="np-list">
+      <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="np" wx:for="{{goods_list}}" wx:key="id">
+        <image src="{{item.cover}}" class="cover" mode="aspectFill"></image>
+        <view class="info">
+          <view class="title two-line-ellipsis">{{item.name}}</view>
+          <view class="xia">
+            <view class="price">{{item.price}}</view>
+<!--            <view class="gou-box">-->
+<!--              <image src="/icons/jiagou.png" class="gou-cart"></image>-->
+<!--            </view>-->
+          </view>
+        </view>
+      </navigator>
+      <view class="np vh" wx:for="{{goods_flex_pad}}" wx:key="index"></view>
+    </view>
+
+    <view class="nomore" wx:if="{{nomore}}">
+      已经没有更多了哦
+    </view>
+    <view class="friendly-nodata" wx:if="{{nodata}}">
+      <image src="/images/nodata-goods.png" class="img"></image>
+      <view class="title">暂无商品</view>
+    </view>
+  </view>
+</view>

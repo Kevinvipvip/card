@@ -1,0 +1,21 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="gg-box">
+    <view class="gg-list">
+      <navigator wx:for="{{rule_list}}" wx:key="id" url="/pages/rule-detail/rule-detail?id={{item.id}}" class="gg">
+        <view class="title one-line-ellipsis">{{item.title}}</view>
+<!--        <view class="date">{{item.create_time}}</view>-->
+      </navigator>
+    </view>
+    <view class="nomore" wx:if="{{nomore}}">
+      已经到底了
+    </view>
+    <view class="friendly-nodata" wx:if="{{nodata}}">
+      <image src="/images/nodata-gg.png" class="img"></image>
+      <view class="title">暂无公告</view>
+    </view>
+  </view>
+</view>

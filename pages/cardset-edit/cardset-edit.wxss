@@ -1,0 +1,575 @@
+page {
+  width: 100vw;
+  overflow: hidden;
+}
+
+.DrawerPage {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  background-color: #fcfafa;
+  transition: all 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+
+.DrawerPage.show {
+  left: 85vw;
+  box-shadow: 0 0 60rpx rgba(0, 0, 0, 0.2);
+  transform-origin: 0;
+}
+
+.DrawerWindow {
+  position: absolute;
+  width: 85vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  transform: scale(1, 1) translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.DrawerWindow.show {
+  transform: scale(1, 1) translateX(0%);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.DrawerClose {
+  position: absolute;
+  width: 40vw;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  color: transparent;
+  padding-bottom: 30rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.6));
+  letter-spacing: 5px;
+  font-size: 50rpx;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+
+.DrawerClose.show {
+  opacity: 1;
+  pointer-events: all;
+  width: 15vw;
+  color: #fff;
+}
+
+.DrawerPage .cu-bar.tabbar .action button.icon {
+  width: 64rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin: 0;
+  display: inline-block;
+}
+
+.DrawerPage .cu-bar.tabbar .action .cu-avatar {
+  margin: 0;
+}
+
+.DrawerPage .nav {
+  flex: 1;
+}
+
+.DrawerPage .cu-bar.tabbar .action {
+  flex: initial;
+}
+
+/* 下面是我写的 */
+
+/* 搜索框 start */
+.filter-box2 {
+  flex-shrink: 0;
+  background: #fcfafa;
+  padding-bottom: 24rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.filter-box2 .search-box {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 24rpx;
+  background: #4583fb;
+}
+
+.filter-box2 .drawer-box {
+  width: 54rpx;
+  height: 54rpx;
+  position: relative;
+}
+
+.filter-box2 .drawer-box .drawer {
+  width: 100%;
+  height: 100%;
+  vert-align: bottom;
+}
+
+.filter-box2 .drawer-box .num {
+  position: absolute;
+  padding: 0 6rpx;
+  top: -8rpx;
+  right: -17rpx;
+  background: #ff4259;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  color: #fff;
+  height: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  opacity: 0;
+  min-width: 24rpx;
+}
+
+.filter-box2 .drawer-box .num.active {
+  opacity: 1;
+}
+
+.filter-box2 .drawer-box .dot {
+  width: 24rpx;
+  height: 24rpx;
+  background: #ff4259;
+  position: fixed;
+  border-radius: 50%;
+  display: none;
+  transition: 0.4s left ease-out, 0.4s top ease-in;
+  z-index: 2;
+}
+
+.filter-box2 .drawer-box .dot.active {
+  display: block;
+}
+
+.filter-box2 .search-box .search {
+  height: 60rpx;
+  border-radius: 30rpx;
+  background-color: #3e75e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx 0 35rpx;
+  flex-grow: 1;
+  margin-left: 28rpx;
+  position: relative;
+}
+
+.filter-box2 .search-box .search input {
+  color: #fff;
+  font-size: 26rpx;
+  flex-grow: 1;
+}
+
+.filter-box2 .search-box .place-holder {
+  position: absolute;
+  height: 60rpx;
+  line-height: 60rpx;
+  left: 35rpx;
+  color: #fcfafa;
+  opacity: 0.4;
+  font-size: 26rpx;
+}
+
+/*.filter-box2 .search-box .search input .input-placeholder {*/
+/*  color: #fcfafa;*/
+/*  opacity: 0.4;*/
+/*}*/
+
+.filter-box2 .search-box .search .del {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+  opacity: 0.7;
+}
+
+.filter-box2 .prop-line {
+  display: flex;
+  background: #fff;
+  position: relative;
+  align-items: center;
+  border-bottom: 5rpx solid rgba(60, 120, 245, 0.07);
+}
+
+.filter-box2 .prop-line > .prop {
+  width: 0;
+  flex-grow: 1;
+  text-align: center;
+  line-height: 79rpx;
+  font-size: 32rpx;
+  color: #4583fb;
+  letter-spacing: 1rpx;
+  position: relative;
+}
+
+.filter-box2 .prop-line > .shu {
+  height: 60rpx;
+  width: 2rpx;
+  background: rgba(37, 134, 255, 0.07);
+}
+
+.filter-box2 .prop-line .prop:nth-child(6)::after {
+  display: none;
+}
+
+.filter-box2 .prop-line .prop.active {
+  background: rgba(37, 134, 206, 0.07);
+}
+
+.filter-box2 .prop-line .pop-list {
+  position: absolute;
+  top: 100%;
+  background: #eff6fe;
+  display: flex;
+  box-sizing: border-box;
+  padding: 30rpx 24rpx 6rpx;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.filter-box2 .prop-line .pop-list .prop {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 26rpx;
+  letter-spacing: 1rpx;
+  text-align: center;
+  margin-bottom: 24rpx;
+  border-radius: 4rpx;
+  background: rgba(69, 131, 251, 0.4);
+  position: relative;
+}
+
+.filter-box2 .prop-line .pop-list .prop.active {
+  background: #4583fb;
+  color: #fff;
+}
+
+.filter-box2 .prop-line .pop-list .prop .cornermark {
+  display: none;
+}
+
+.filter-box2 .prop-line .pop-list .prop.active .cornermark {
+  position: absolute;
+  display: block;
+  right: 0;
+  bottom: 0;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.filter-box2 .prop-line .pop-list .prop.all {
+}
+
+.filter-box2 .prop-line .pop-list.line .prop {
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+/* 搜索框 end */
+
+.card-box {
+  flex-grow: 1;
+}
+
+.card-box .card-list-wrapper {
+}
+
+.card-box .card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 24rpx 24rpx;
+}
+
+.card-box .card-list .card {
+  width: 224rpx;
+  margin-bottom: 24rpx;
+}
+
+.card-box .card-list .card:nth-last-child(-n + 3) {
+  margin-bottom: 0;
+}
+
+.card-box .card-list .card .btn-group {
+  display: flex;
+}
+
+.card-box .card-list .card .btn-group button {
+  width: 0;
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #fff;
+  border-radius: 0;
+  min-height: auto;
+}
+
+.card-box .card-list .card .btn-group .zhu {
+  background: #bfbfbf;
+}
+
+.card-box .card-list .card .btn-group .bei {
+  background: #d2d2d2;
+}
+
+.card-box .card-list .card .btn-group .zhu.active {
+  background-image: linear-gradient(90deg, #4695fb 0%, #497cfc 100%);
+}
+
+.card-box .card-list .card .btn-group .bei.active {
+  background-image: linear-gradient(90deg, #fa796a 0%, #fd4a78 100%);
+}
+
+.card-box .card-list .card image {
+  width: 100%;
+  height: 297rpx;
+  vertical-align: bottom;
+}
+
+.top-box {
+  flex-shrink: 0;
+}
+
+.top-box .explain {
+  position: relative;
+  height: 200rpx;
+  box-sizing: border-box;
+  padding: 22rpx;
+  display: flex;
+  align-items: center;
+}
+
+.top-box .explain .bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.top-box .explain .text {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 32rpx;
+  letter-spacing: 1rpx;
+  line-height: 48rpx;
+}
+
+.top-box .tab-list {
+  display: flex;
+}
+
+.top-box .tab-list .tab {
+  width: 0;
+  flex-grow: 1;
+  height: 84rpx;
+  line-height: 79rpx;
+  box-sizing: border-box;
+  border-bottom: 5rpx solid #eff3fc;
+  font-size: 32rpx;
+  letter-spacing: 1rpx;
+  color: rgba(69, 131, 251, 0.4);
+  text-align: center;
+}
+
+.top-box .tab-list .tab.active {
+  border-color: #3c78f5;
+  color: #4583fb;
+}
+
+.DrawerWindow .card-list-wrapper {
+  flex-grow: 1;
+}
+
+.card-list2 {
+  padding: 24rpx 24rpx 0;
+}
+
+.card-list2 .card:first-child {
+  margin-top: 0;
+}
+
+.card-list2 .card {
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+}
+
+.card-list2 .card .cost {
+  width: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background-image: linear-gradient(90deg, #9496ff 0%, #7577ff 100%);
+  font-size: 28rpx;
+  letter-spacing: 1rpx;
+  color: #fff;
+  align-self: stretch;
+}
+
+.card-list2 .card .name {
+  width: 0;
+  flex-grow: 1;
+  line-height: 60rpx;
+  background: #dcdcdc;
+  padding: 0 25rpx;
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.card-list2 .card .add-sub {
+  display: flex;
+  align-items: center;
+  width: 175rpx;
+  padding: 0 16rpx;
+  justify-content: space-between;
+  background: #f8f8f8;
+  align-self: stretch;
+}
+
+.card-list2 .card .add-sub .sub {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.card-list2 .card .add-sub .num {
+  width: 40rpx;
+  height: 40rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #bfbfbf;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.card-list2 .card .add-sub .add {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.bottom-box {
+  flex-shrink: 0;
+  padding: 30rpx 24rpx;
+}
+
+.bottom-box .edit-btn {
+  padding: 0;
+  margin: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  background-image: linear-gradient(90deg, #8587fe 0%, #6567fa 100%);
+  text-align: center;
+  min-height: auto;
+  font-size: 32rpx;
+  letter-spacing: 1rpx;
+  color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+}
+
+/* 弹窗样式 start */
+.cmodal {
+  width: 560rpx;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  padding: 58rpx 50rpx 0;
+}
+
+.cmodal .title {
+  text-align: center;
+  font-size: 36rpx;
+}
+
+.cmodal .form {
+  margin-top: 40rpx;
+}
+
+.cmodal .form input {
+  width: 100%;
+  height: 60rpx;
+  line-height: 56rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #e6e6e6;
+  font-size: 26rpx;
+}
+
+.cmodal .btn-box {
+  display: flex;
+}
+
+.cmodal .btn-box button {
+  width: 0;
+  flex-grow: 1;
+  border-radius: 0;
+  padding: 32rpx 0 33rpx;
+  margin: 0;
+  font-size: 36rpx;
+  min-height: auto;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+}
+
+.cmodal .btn-box button.button-hover {
+  background-color: transparent;
+}
+
+.cmodal .btn-box .cancel {
+  color: #333;
+}
+
+.cmodal .btn-box .confirm {
+  color: #4888fb;
+}
+
+.cmodal icon {
+  display: block;
+}
+
+.cmodal.succ {
+  padding: 55rpx 0 0;
+  overflow: hidden;
+}
+
+.cmodal.succ .title {
+  margin-top: 23rpx;
+}
+
+.cmodal.succ .btn-box {
+  border-top: 2rpx solid rgba(0, 0, 0, 0.03);
+  margin-top: 23rpx;
+}
+/* 弹窗样式 end */

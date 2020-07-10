@@ -1,0 +1,125 @@
+.page {
+  background: #fcfafa;
+  padding-top: 196rpx;
+}
+
+.filter-box .prop-line {
+  display: flex;
+  background: #fff;
+  position: relative;
+  align-items: center;
+  border-bottom: 5rpx solid rgba(60, 120, 245, 0.07);
+}
+
+.filter-box .prop-line > .prop {
+  width: 0;
+  flex-grow: 1;
+  text-align: center;
+  line-height: 79rpx;
+  font-size: 32rpx;
+  color: #4583fb;
+  letter-spacing: 1rpx;
+  position: relative;
+}
+
+.filter-box .prop-line > .shu {
+  height: 60rpx;
+  width: 2rpx;
+  background: rgba(37, 134, 255, 0.07);
+}
+
+.filter-box .prop-line .prop:nth-child(6)::after {
+  display: none;
+}
+
+.filter-box .prop-line .prop.active {
+  background: rgba(37, 134, 206, 0.07);
+}
+
+.filter-box .prop-line .pop-list {
+  position: absolute;
+  top: 100%;
+  background: #eff6fe;
+  display: flex;
+  box-sizing: border-box;
+  padding: 30rpx 24rpx 6rpx;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.filter-box .prop-line .pop-list .prop {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 26rpx;
+  letter-spacing: 1rpx;
+  text-align: center;
+  margin-bottom: 24rpx;
+  border-radius: 4rpx;
+  background: rgba(69, 131, 251, 0.4);
+  position: relative;
+}
+
+.filter-box .prop-line .pop-list .prop.active {
+  background: #4583fb;
+  color: #fff;
+}
+
+.filter-box .prop-line .pop-list .prop .cornermark {
+  display: none;
+}
+
+.filter-box .prop-line .pop-list .prop.active .cornermark {
+  position: absolute;
+  display: block;
+  right: 0;
+  bottom: 0;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.filter-box .prop-line .pop-list .prop.all {
+}
+
+.filter-box .prop-line .pop-list.line .prop {
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.card-box {
+}
+
+.card-box .card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+
+.card-box .card-list .card {
+  width: 224rpx;
+  height: 297rpx;
+  margin-bottom: 24rpx;
+}
+
+.card-box .card-list .card:nth-last-child(-n + 3) {
+  margin-bottom: 0;
+}
+
+.card-box .card-list .card image {
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
+}

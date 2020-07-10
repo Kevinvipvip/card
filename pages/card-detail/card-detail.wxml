@@ -1,0 +1,76 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <view class="pai">
+    <image src="{{card_bg}}" class="bg"></image>
+    <view bindtap="zoom" class="card-box">
+      <image src="{{card.pic}}" class="card"></image>
+      <image src="/icons/magnifier.png" class="zoom"></image>
+    </view>
+  </view>
+  <view class="info">
+    <view class="line-list">
+      <view class="line">
+        <view class="label">名称</view>
+        <view class="value">{{card.card_name}}</view>
+      </view>
+      <view class="line">
+        <view class="label">类别</view>
+        <view class="value">{{card.wushuang == 1 ? '无双' : ''}}{{card.type}}</view>
+      </view>
+      <view class="line">
+        <view class="label">版本</view>
+        <view class="value">{{card.version}}</view>
+      </view>
+    </view>
+    <view class="tc-list">
+      <view class="tc">
+        <view class="label">势力</view>
+        <view class="value">{{card.camp}}</view>
+      </view>
+      <view class="tc">
+        <view class="label">费用</view>
+        <view class="value">{{card.resource}}</view>
+      </view>
+      <view class="tc">
+        <view class="label">属性</view>
+        <view class="value">{{card.attr}}</view>
+      </view>
+      <view class="tc">
+        <view class="label">能力</view>
+        <view class="value">{{card.ability}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="long-info">
+    <view class="long" wx:if="{{card.desc_show == 1}}">
+      <view class="title">技能描述</view>
+      <view class="content">{{card.desc}}</view>
+    </view>
+    <view class="long" wx:if="{{card.origin_show == 1}}">
+      <view class="title">文化科普</view>
+      <view class="content">{{card.origin}}</view>
+    </view>
+    <view class="long" wx:if="{{card.qa_show == 1}}">
+      <view class="title">Q&A</view>
+      <view class="content">{{card.qa}}</view>
+    </view>
+  </view>
+  <view class="foot">
+    <view bindtap="cardCollect" class="collect-box">
+      <image src="/icons/collect-active.png" class="col" wx:if="{{card.collect}}"></image>
+      <image src="/icons/collect.png" class="col" wx:else></image>
+    </view>
+    <view class="pagination">
+      <view bindtap="jump" data-id="{{card.prev_card_id}}" class="iw p-left {{card.prev_card_id ? '' : 'disabled'}}">
+        <image src="/icons/p-left.png"></image>
+      </view>
+      <view class="num">{{card.page}} / {{card.total_count}}</view>
+      <view bindtap="jump" data-id="{{card.next_card_id}}" class="iw p-right {{card.next_card_id ? '' : 'disabled'}}">
+        <image src="/icons/p-right.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

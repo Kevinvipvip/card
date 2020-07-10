@@ -1,0 +1,72 @@
+<view class="full-loading" wx:if="{{full_loading}}">
+  <view class="image"></view>
+</view>
+
+<view class="page">
+  <!-- banner -->
+  <swiper indicator-dots="{{true}}"
+          autoplay="{{true}}"
+          circular="{{true}}"
+          previous-margin="27rpx"
+          next-margin="27rpx"
+          class="banner">
+    <swiper-item wx:for="{{slide_list}}" wx:key="id">
+      <image bindtap="jump" data-page="gg-detail?id={{item.url}}" data-url="{{item.url}}" src="{{item.pic}}"></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="main">
+    <!-- 金刚区 -->
+    <view class="king-kong">
+      <navigator url="/pages/rule-list/rule-list" class="kk kk1">
+        <image src="/images/rules.png"></image>
+      </navigator>
+      <navigator url="/pages/blood-gas/blood-gas" class="kk kk2">
+        <image src="/images/bloodgas.png"></image>
+      </navigator>
+    </view>
+
+    <!-- 文章公告 -->
+    <view class="gong-gao">
+      <view class="blue-title-line">
+        <view class="title">文章公告</view>
+        <navigator url="/pages/gg-list/gg-list" class="more">
+          <view class="text">更多</view>
+          <image src="/icons/you.png" class="icon"></image>
+        </navigator>
+      </view>
+      <view class="gg-list">
+        <navigator url="/pages/gg-detail/gg-detail?id={{item.id}}" class="gg" wx:for="{{article_list}}" wx:key="id">
+          <view class="title one-line-ellipsis">{{item.title}}</view>
+          <view class="time">{{item.create_time}}</view>
+        </navigator>
+      </view>
+    </view>
+
+    <!-- 新品推荐 -->
+    <view class="product-box">
+      <view class="blue-title-line">
+        <view class="title">新品推荐</view>
+        <navigator url="/pages/shop/shop" open-type="switchTab" class="more">
+          <view class="text">更多</view>
+          <image src="/icons/you.png" class="icon"></image>
+        </navigator>
+      </view>
+      <view class="np-list">
+        <navigator url="/pages/shop-detail/shop-detail?id={{item.id}}" class="np" wx:for="{{goods_list}}" wx:key="id">
+          <image src="{{item.cover}}" class="cover"></image>
+          <view class="info">
+            <view class="title two-line-ellipsis">{{item.name}}</view>
+            <view class="xia">
+              <view class="price">{{item.price}}</view>
+<!--              <view class="gou-box">-->
+<!--                <image src="/icons/jiagou.png" class="gou-cart"></image>-->
+<!--              </view>-->
+            </view>
+          </view>
+        </navigator>
+        <view class="np vh" wx:for="{{goods_flex_pad}}" wx:key="index"></view>
+      </view>
+    </view>
+  </view>
+</view>
