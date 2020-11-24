@@ -1,7 +1,8 @@
 const utils = require('utils/utils.js');
 
 App({
-  onLaunch() {
+  onLaunch(options) {
+    console.log(options.query.scene)
     wx.getSystemInfo({
       success: res => {
         this.my_config.statusBarHeight = res.statusBarHeight;

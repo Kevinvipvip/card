@@ -1,240 +1,241 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
-	"appid": "wx58859a6ddf8926de",
-	"projectname": "card",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "卡牌查询",
-					"pathName": "pages/search/search",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "商城",
-					"pathName": "pages/shop/shop",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "分享页面",
-					"pathName": "pages/poster/poster",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "套牌创建/编辑",
-					"pathName": "pages/cardset-edit/cardset-edit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "测试",
-					"pathName": "pages/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "商品详情页",
-					"pathName": "pages/shop-detail/shop-detail",
-					"query": "id=6",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "购物车",
-					"pathName": "pages/shop-car/shop-car",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "计血器",
-					"pathName": "pages/blood-gas/blood-gas",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 9,
-					"name": "卡牌详情",
-					"pathName": "pages/card-detail/card-detail",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": 10,
-					"name": "套牌详情",
-					"pathName": "pages/cardset-detail/cardset-detail",
-					"query": "id=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "个人信息",
-					"pathName": "pages/user-info/user-info",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "关于我们",
-					"pathName": "pages/about/about",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "单个商品购买",
-					"pathName": "pages/order-create/order-create",
-					"query": "id=5&num=1&attr_id=1",
-					"scene": null
-				},
-				{
-					"id": 14,
-					"name": "多个商品购买",
-					"pathName": "pages/cart-order-create/cart-order-create",
-					"query": "ids=7,8",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的订单",
-					"pathName": "pages/my-orders/my-orders",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "文章公告",
-					"pathName": "pages/gg-list/gg-list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 17,
-					"name": "公告详情",
-					"pathName": "pages/gg-detail/gg-detail",
-					"query": "id=3",
-					"scene": null
-				},
-				{
-					"id": 18,
-					"name": "订单详情",
-					"pathName": "pages/order-detail/order-detail",
-					"query": "id=13",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "收货地址",
-					"pathName": "pages/my-address/my-address",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "地址详情",
-					"pathName": "pages/address-detail/address-detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的收藏",
-					"pathName": "pages/my-collect/my-collect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "售后服务",
-					"pathName": "pages/refund-list/refund-list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "物流信息",
-					"pathName": "pages/logistics/logistics",
-					"query": "id=13",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "规则列表",
-					"pathName": "pages/rule-list/rule-list",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.9.4",
+  "appid": "wx58859a6ddf8926de",
+  "projectname": "card",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "卡牌查询",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "商城",
+          "pathName": "pages/shop/shop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "分享页面",
+          "pathName": "pages/poster/poster",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "套牌创建/编辑",
+          "pathName": "pages/cardset-edit/cardset-edit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "测试",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "商品详情页",
+          "pathName": "pages/shop-detail/shop-detail",
+          "query": "id=6",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "购物车",
+          "pathName": "pages/shop-car/shop-car",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "计血器",
+          "pathName": "pages/blood-gas/blood-gas",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 9,
+          "name": "卡牌详情",
+          "pathName": "pages/card-detail/card-detail",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "id": 10,
+          "name": "套牌详情",
+          "pathName": "pages/cardset-detail/cardset-detail",
+          "query": "id=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "个人信息",
+          "pathName": "pages/user-info/user-info",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "关于我们",
+          "pathName": "pages/about/about",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "单个商品购买",
+          "pathName": "pages/order-create/order-create",
+          "query": "id=5&num=1&attr_id=1",
+          "scene": null
+        },
+        {
+          "id": 14,
+          "name": "多个商品购买",
+          "pathName": "pages/cart-order-create/cart-order-create",
+          "query": "ids=7,8",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的订单",
+          "pathName": "pages/my-orders/my-orders",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "文章公告",
+          "pathName": "pages/gg-list/gg-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 17,
+          "name": "公告详情",
+          "pathName": "pages/gg-detail/gg-detail",
+          "query": "id=3",
+          "scene": null
+        },
+        {
+          "id": 18,
+          "name": "订单详情",
+          "pathName": "pages/order-detail/order-detail",
+          "query": "id=13",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "收货地址",
+          "pathName": "pages/my-address/my-address",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "地址详情",
+          "pathName": "pages/address-detail/address-detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的收藏",
+          "pathName": "pages/my-collect/my-collect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "售后服务",
+          "pathName": "pages/refund-list/refund-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "物流信息",
+          "pathName": "pages/logistics/logistics",
+          "query": "id=13",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "规则列表",
+          "pathName": "pages/rule-list/rule-list",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
